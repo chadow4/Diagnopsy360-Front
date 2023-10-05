@@ -1,0 +1,23 @@
+<div class="container">
+  <form class="flex justify-center items-center flex-col rounded" (ngSubmit)="onSubmit()">
+    <h1>Connexion</h1>
+    <div class="form-group w-full md:w-6/12 lg:w-4/12">
+      <label for="email">Email</label>
+      <input type="email" class="form-control w-full" [(ngModel)]="loginForm.email" name="email" id="email" placeholder="Email">
+    </div>
+
+    <div class="form-group w-full md:w-6/12 lg:w-4/12">
+      <label for="password">Mot de passe</label>
+      <input type="password" class="form-control w-full" [(ngModel)]="loginForm.password" name="password" id="password" placeholder="Mot de passe">
+    </div>
+
+    <div class="form-group text-center my-3">
+      <button class="button-blue" type="submit">Connexion</button>
+    </div>
+
+    <div class="flex justify-between gap-5">
+      <span>Pas encore inscrit ?</span>
+      <a class="badge-indigo" [routerLink]="['register']">Inscription</a>
+    </div>
+  </form>
+</div>
