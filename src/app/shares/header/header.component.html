@@ -1,0 +1,73 @@
+<nav class="flex justify-between items-center px-5 md:px-20 lg:px-40 py-5 border-b-4">
+
+  <div routerLink="/home" class="flex items-center justify-center cursor-pointer mt-2">
+    <h1 class="text-8xl font-bold pt-2">DiagnoPsy360</h1>
+  </div>
+  <div class="hidden md:flex gap-20 items-center justify-center">
+    <ul class="flex gap-5">
+      <li>
+        <a [routerLink]="['home']" routerLinkActive="active" href="#" class="hover:text-blue-700" aria-current="page">Accueil</a>
+      </li>
+      <li *ngIf="!isLoggedIn">
+        <a [routerLink]="['login']" routerLinkActive="active" href="#" class="hover:text-blue-700" aria-current="page">Connexion</a>
+      </li>
+      <li *ngIf="!isLoggedIn">
+        <a [routerLink]="['register']" href="#" class="hover:text-blue-700" aria-current="page">Inscription</a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a>{{mySession.email}}</a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a (click)="logout()" href="#" class="hover:text-blue-700" aria-current="page">Deconnexion</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <button type="button"
+          class="inline-flex text-3xl items-center p-2 w-10 h-10 justify-center  text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          data-drawer-target="drawer" data-drawer-show="drawer" data-drawer-placement="right" aria-controls="drawer">
+    <span class="sr-only">Open main menu</span>
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"/>
+    </svg>
+  </button>
+
+</nav>
+
+
+<!-- drawer component -->
+<div id="drawer"
+     class="fixed top-0 right-0 py-10 px-5 z-40 h-screen overflow-y-auto transition-transform translate-x-full bg-white w-full dark:bg-gray-800"
+     tabindex="-1" aria-labelledby="drawer-right-label">
+  <h1 id="drawer-right-label"
+      class="inline-flex items-center mb-4 text-gray-500 dark:text-gray-400 text-2xl border-gray-700 border-b-5">
+    Navigation
+  </h1>
+  <ul class="flex flex-col space-y-4">
+    <li>
+      <a data-drawer-hide="drawer" [routerLink]="['home']" href="#"
+         class="button-white hover:bg-blue-200 block">Accueil</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <a data-drawer-hide="drawer" [routerLink]="['login']" href="#" class="button-white hover:bg-blue-200 block">Connexion</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <a data-drawer-hide="drawer" [routerLink]="['register']" href="#" class="button-white hover:bg-blue-200 block">Inscription</a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a data-drawer-hide="drawer" (click)="logout()" href="#"
+         class="button-white hover:bg-blue-200 block">Deconnexion</a>
+    </li>
+  </ul>
+
+  <button type="button" data-drawer-hide="drawer" aria-controls="drawer"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg  w-8 h-8 absolute top-10 scale-150 right-6 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white text-2xl">
+    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+    </svg>
+    <span class="sr-only">Close menu</span>
+  </button>
+</div>
