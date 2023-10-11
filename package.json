@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@auth0/angular-jwt": "^5.1.2",
     "dotenv": "^16.3.1",
     "flowbite": "^1.8.1",
     "rxjs": "~7.8.0",

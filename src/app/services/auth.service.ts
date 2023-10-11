@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {AlertService} from "./alert.service";
 import {UserCreateDto, UserJwtSessionDto, UserJWtTokenDto, UserLoginDto} from "../models/user.model";
 import {API_URL} from "./config";
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class AuthService {
 
   auth_API = API_URL + "/auth/";
   USER_JWT_TOKEN_KEY = 'USER_JWT_TOKEN_KEY';
-
+  private jwtHelper = new JwtHelperService();
   private isLoggedInSubject = new BehaviorSubject<boolean>(!!this.getCurrentSession());
   public authStateChanged = this.isLoggedInSubject.asObservable();
 
@@ -39,9 +41,15 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  public getCurrentSession(): UserJwtSessionDto {
+  public getCurrentSession(): UserJwtSessionDto  | null {
     const userJwtToken = localStorage.getItem(this.USER_JWT_TOKEN_KEY);
-    return userJwtToken ? JSON.parse(atob(userJwtToken.split('.')[1])) : null;
+    return userJwtToken && !this.jwtHelper.isTokenExpired(userJwtToken)
+      ? this.jwtHelper.decodeToken(userJwtToken)  as UserJwtSessionDto: null;
+  }
+
+  public getExpirationDate(): Date | null {
+    const userJwtToken = localStorage.getItem(this.USER_JWT_TOKEN_KEY);
+    return userJwtToken ? this.jwtHelper.getTokenExpirationDate(userJwtToken) : null;
   }
 
   public isLoggedIn(): boolean {
@@ -49,16 +57,16 @@ export class AuthService {
   }
 
   public isAdmin(): boolean {
-    return this.getCurrentSession().role === "admin";
+    return this.getCurrentSession()?.role === "admin";
   }
 
   public getCurrentToken(): UserJWtTokenDto | null {
-    const userJwtToken = window.localStorage.getItem(this.USER_JWT_TOKEN_KEY);
+    const userJwtToken = localStorage.getItem(this.USER_JWT_TOKEN_KEY);
     return userJwtToken ? JSON.parse(userJwtToken) : null;
   }
 
   private setCurrentToken(userJwtTokenDTO: UserJWtTokenDto) {
     const userJwtTokenString = JSON.stringify(userJwtTokenDTO);
-    window.localStorage.setItem(this.USER_JWT_TOKEN_KEY, userJwtTokenString);
+    localStorage.setItem(this.USER_JWT_TOKEN_KEY, userJwtTokenString);
   }
 }

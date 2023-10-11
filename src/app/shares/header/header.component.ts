@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
-  mySession!: UserJwtSessionDto;
+  mySession!: UserJwtSessionDto | null;
 
   constructor(private authService: AuthService) {
   }
