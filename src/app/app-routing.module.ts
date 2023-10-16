@@ -4,6 +4,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {QuestionnaireComponent} from "./pages/questionnaire/questionnaire.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'questionnaire',
+    component: QuestionnaireComponent,
   },
   {
     path: '**',

@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./interceptors/auth-interceptor";
 import { HeaderComponent } from './shares/header/header.component';
+import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeaderComponent } from './shares/header/header.component';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuestionnaireComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,48 @@
+<div class="container">
+  <div *ngIf="!qcmStarted && !isFinished" class="flex flex-col justify-center items-center">
+    <h1 class="text-center font-bold">Questionnaire de diagonistique Psychologique</h1>
+    <button (click)="startQcm()" type="button" class="button-cyan">Commencer le Questionnaire</button>
+  </div>
+
+
+  <form class="card  p-5" *ngIf="!isFinished && qcmStarted" (ngSubmit)="goToNextQuestion()">
+    <h2 class="fw-bold text-8xl text-center">Question {{currentQuestionIndex + 1 }}: {{diagnosticQuestions[currentQuestionIndex].questionText}}</h2>
+
+    <div class="my-2" *ngFor="let option of diagnosticQuestions[currentQuestionIndex].options">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" [value]="option"
+               [(ngModel)]="myResponses[currentQuestionIndex]"
+               name="option" id="option{{option}}">
+        <label class="form-check-label ms-5" for="option{{option}}">{{option}}</label>
+
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <a class="button-cyan me-2 cursor-pointer" (click)="goToPreviousQuestion()">⏮️ Question Précédente</a>
+      <button type="submit" class="button-cyan">
+        {{ currentQuestionIndex + 1 < totalQuestions ? "Question suivante ⏭️" : "Terminer le QCM" }}
+      </button>
+
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 place-items-center gap-1">
+      <div *ngFor="let myResponse of myResponses let i = index" class="parent-div mt-3">
+        <span (click)="goToQuestion(i)" class="ms-1 badge-green cursor-pointer p-5"
+              [ngClass]="!myResponse ? 'alert alert-danger' : 'alert alert-info'"
+              [ngStyle]="{ 'border': i === currentQuestionIndex ? '2px solid black' : '' }">
+          Question {{i + 1}}
+        </span>
+      </div>
+    </div>
+    <em class="mt-4 badge-indigo mt-10"><b>NB</b> : Les questions qui sont répondues apparaissent en bleu (il es biensur possible de modifier leurs valeurs)</em>
+  </form>
+
+
+  <div *ngIf="isFinished" class="flex flex-col justify-center items-center">
+    <h1>Résultats :</h1>
+    <button (click)="sendResponses()" class="button-cyan">Envoyer résultat</button>
+
+  </div>
+
+
+</div>
