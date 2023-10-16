@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserDto, UserJwtSessionDto} from "../../models/user.model";
-import {UserService} from "../../services/user.service";
 import {AuthService} from "../../services/auth.service";
 import {Flowbite} from "../../decorators/flowbite";
 
@@ -13,19 +11,12 @@ import {Flowbite} from "../../decorators/flowbite";
 export class HomeComponent implements OnInit {
 
 
-  userList!: UserDto[];
-  mySession!: UserJwtSessionDto;
-
-  constructor(private userService: UserService,
-              private authService: AuthService) {
+  constructor(private authService: AuthService) {
 
   }
 
   ngOnInit() {
   }
 
-  disconnect() {
-    this.authService.logout();
-  }
 
 }
