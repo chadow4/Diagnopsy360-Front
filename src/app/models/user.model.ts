@@ -1,4 +1,4 @@
-import {DiagnosisDto, DiagnosticDto} from "./diagnosis.model";
+import {DiagnosisDto} from "./diagnosis.model";
 
 export interface UserCreateDto {
   firstname: string;
@@ -29,6 +29,7 @@ export interface DoctorDto extends UserDto {
 export interface PatientDto extends UserDto {
   myDiagnoses: DiagnosisDto[];
 }
+
 export interface UserDeleteDto {
   id: number;
 }
@@ -44,7 +45,7 @@ export interface UserJWtTokenDto {
 }
 
 
-export interface UserJwtSessionDto{
+export interface UserJwtSessionDto {
   id: number;
   email: string;
   role: string;
