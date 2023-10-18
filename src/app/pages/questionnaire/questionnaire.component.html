@@ -27,8 +27,8 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 place-items-center gap-1">
       <div *ngFor="let myResponse of myResponses let i = index" class="parent-div mt-3">
-        <span (click)="goToQuestion(i)" class="ms-1 badge-green cursor-pointer p-5"
-              [ngClass]="!myResponse ? 'alert alert-danger' : 'alert alert-info'"
+        <span (click)="goToQuestion(i)" class="ms-1 cursor-pointer p-5"
+              [ngClass]="!myResponse ? 'alert badge-red' : 'badge-green'"
               [ngStyle]="{ 'border': i === currentQuestionIndex ? '2px solid black' : '' }">
           Question {{i + 1}}
         </span>

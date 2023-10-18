@@ -72,8 +72,8 @@ export class QuestionnaireComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.initializeMyResponses();
         this.totalQuestions = this.diagnosticQuestions.length;
+        this.initializeMyResponses();
     }
 
     public startQcm() {
@@ -81,17 +81,16 @@ export class QuestionnaireComponent implements OnInit {
     }
 
     public goToNextQuestion() {
-        console.log(this.currentQuestionIndex);
-        console.log(this.totalQuestions)
-
-
-        if (this.currentQuestionIndex + 1 == this.totalQuestions) {
-            this.qcmStarted = false;
-            this.isFinished = true;
+        if (this.currentQuestionIndex + 1 === this.totalQuestions) {
+            if (!this.myResponses.includes("")) {
+                this.qcmStarted = false;
+                this.isFinished = true;
+            } else {
+                this.alertService.error("Veuillez répondre à toutes les questions");
+            }
         } else {
             this.currentQuestionIndex++;
         }
-
     }
 
     public goToPreviousQuestion() {
@@ -103,21 +102,20 @@ export class QuestionnaireComponent implements OnInit {
     }
 
     private initializeMyResponses() {
-        for (let i = 0; i < this.diagnosticQuestions.length; i++) {
-            this.myResponses.push("");
-        }
+        this.myResponses = Array(this.totalQuestions).fill("");
     }
 
     public sendResponses() {
-
         const mySymtoms: SendSymtomsDiagnosisDto = {
             symptoms: this.myResponses
-        }
-        this.diagnosisService.sendSymptomsDiagnosis(mySymtoms).subscribe((response) => {
-            this.alertService.success(response.message);
-        }, (error) => {
-            this.alertService.error(error.error.message);
-        });
+        };
+
+        this.diagnosisService.sendSymptomsDiagnosis(mySymtoms).subscribe(
+            (response) => this.alertService.success(response.message),
+            (error) => this.alertService.error(error.error.message)
+        );
+
         this.router.navigate(['home']);
     }
+
 }
