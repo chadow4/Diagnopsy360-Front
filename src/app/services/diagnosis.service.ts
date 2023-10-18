@@ -14,8 +14,8 @@ export class DiagnosisService {
   constructor(private http: HttpClient) {
   }
 
-  public getDiagnosisNotValidated(): Observable<DiagnosisDto> {
-    return this.http.get<DiagnosisDto>(this.user_API);
+  public getDiagnosisNotValidated(): Observable<DiagnosisDto[]> {
+    return this.http.get<DiagnosisDto[]>(this.user_API);
   }
 
   public getDiagnosisById(id: number): Observable<DiagnosisDto> {
