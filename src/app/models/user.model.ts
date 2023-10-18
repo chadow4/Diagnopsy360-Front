@@ -1,3 +1,4 @@
+import {DiagnosisDto, DiagnosticDto} from "./diagnosis.model";
 
 export interface UserCreateDto {
   firstname: string;
@@ -19,6 +20,14 @@ export interface UserDto {
   lastname: string;
   email: string;
   role: string;
+}
+
+export interface DoctorDto extends UserDto {
+  myPatientsDiagnoses: DiagnosisDto[];
+}
+
+export interface PatientDto extends UserDto {
+  myDiagnoses: DiagnosisDto[];
 }
 export interface UserDeleteDto {
   id: number;
