@@ -16,6 +16,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./interceptors/auth-interceptor";
 import { HeaderComponent } from './shares/header/header.component';
 import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.component';
+import { DoctorComponent } from './pages/doctor/doctor.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.comp
     RegisterComponent,
     NotFoundComponent,
     HeaderComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    DoctorComponent
   ],
   imports: [
     BrowserModule,
