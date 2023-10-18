@@ -56,8 +56,8 @@ export class AuthService {
     return this.getCurrentSession() !== null;
   }
 
-  public isAdmin(): boolean {
-    return this.getCurrentSession()?.role === "admin";
+  public isDoctor(): boolean {
+    return this.getCurrentSession()?.role === "doctor";
   }
 
   public getCurrentToken(): UserJWtTokenDto | null {

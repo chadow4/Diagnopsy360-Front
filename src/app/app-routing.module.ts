@@ -6,6 +6,10 @@ import {RegisterComponent} from "./pages/register/register.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {QuestionnaireComponent} from "./pages/questionnaire/questionnaire.component";
 import { DoctorComponent } from "./pages/doctor/doctor.component";
+import {DoctorGuard} from "./guards/doctor-guard";
+import {ConnectedGuard} from "./guards/connected-guard";
+import {DisconnectedGuard} from "./guards/disconnected-guard";
+import {PatientGuard} from "./guards/patient-guard";
 
 const routes: Routes = [
   {
@@ -21,18 +25,22 @@ const routes: Routes = [
   {
     path: 'doctor',
     component: DoctorComponent,
+    canActivate: [ConnectedGuard,DoctorGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [DisconnectedGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [DisconnectedGuard]
   },
   {
     path: 'questionnaire',
     component: QuestionnaireComponent,
+    canActivate: [ConnectedGuard,PatientGuard]
   },
   {
     path: '**',
