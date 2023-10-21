@@ -14,14 +14,30 @@ import { DiagnosisService } from 'src/app/services/diagnosis.service';
 export class DoctorComponent implements OnInit {
  
   listDiagnosis: DiagnosisDto[] = []; // Liste pour stocker les utilisateurs avec le rôle 'client'
+  myPatients: DiagnosisDto[] = []; // Liste pour stocker les utilisateurs avec le rôle 'client'
+  myId: number = 0;
 
-  constructor(private authService : AuthService,
+  constructor(private userService : UserService,
               private diagnosisService: DiagnosisService) { }
 
   ngOnInit() {
-    this.diagnosisService.getDiagnosisNotValidated().subscribe(diag => {
-      this.listDiagnosis = diag;
-    });
+      this.diagnosisService.getDiagnosisNotValidated().subscribe(diag => {
+        this.listDiagnosis = diag;
+      });
 
+      this.userService.getMyInfos().subscribe(user => {
+        console.log('ID de l\'utilisateur:',  user.id);
+        this.myId = user.id;
+
+        // Appel de la méthode après avoir obtenu l'ID
+        this.diagnosisService.selectMyDiagnosis(this.myId).subscribe(mydiag => {
+          this.myPatients = mydiag;
+        }, error => {
+          console.error('Erreur lors de la récupération des données:', error);
+        });
+
+      });
   }
+              
+            
 }

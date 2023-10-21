@@ -35,5 +35,36 @@
 </div>
 
 <h2>My patients</h2>
-
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  Patient
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Symptomes
+              </th>
+              <th scope="col" class="px-6 py-3">
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let mydiag of myPatients" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ mydiag.patient.firstname }}
+                {{ mydiag.patient.lastname }}
+              </th>
+              <td class="px-6 py-4">
+                {{ mydiag.symptoms }}
+              </td>
+              <td class="px-6 py-4">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Discuter
+                </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 </section>
