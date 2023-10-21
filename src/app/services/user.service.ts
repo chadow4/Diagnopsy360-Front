@@ -32,6 +32,14 @@ export class UserService {
     return this.http.delete<any>(this.user_API + id);
   }
 
+  //Patient part
+  public showAllPatient(): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(this.user_API + 'patients');
+  }
+
+  public showPatientsWithNoDoctor(): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(this.user_API + 'patientsnodoctor');
+  }
 
 
 }
