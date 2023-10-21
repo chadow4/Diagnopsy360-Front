@@ -11,9 +11,12 @@ export interface UserUpdateDto {
   firstname?: string;
   lastname?: string;
   email?: string;
-  password?: string;
 }
 
+export interface UserUpdatePasswordDto {
+  lastPassword: string;
+  newPassword: string;
+}
 export interface UserDto {
   id: number;
   firstname: string;

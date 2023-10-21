@@ -1,0 +1,48 @@
+<div class="container mx-auto">
+  <div class="grid place-items-center">
+    <h1 class="text-3xl">Mon profil</h1>
+    <div class="border p-5 font-extrabold my-5">
+      <p>Vous pouvez modifier vos informations personnelles ici.</p>
+      <p>Si vous souhaitez changer votre mot de passe, <button class="button-cyan" (click)="showPasswordForm = !showPasswordForm">cliquez ici</button></p>
+    </div>
+
+    <form class="grid place-items-center w-full md:w-6/12 my-5" [formGroup]="userForm" (ngSubmit)="updateUserInfos()">
+      <h2>Modifier mes informations :</h2>
+      <div class="form-group">
+        <label class="form-label" for="firstname">Prénom</label>
+        <input class="form-control" type="text" id="firstname" formControlName="firstname">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="lastname">Nom de famille</label>
+        <input class="form-control" type="text" id="lastname" formControlName="lastname">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" type="email" id="email" formControlName="email">
+      </div>
+      <button class="button-cyan rounded" type="submit" [disabled]="!userForm.valid">Mettre à jour mes informations</button>
+    </form>
+
+
+    <form *ngIf="showPasswordForm" class="grid place-items-center w-full md:w-6/12 my-5" [formGroup]="passwordForm" (ngSubmit)="updateUserPassword()">
+      <h2>Modifier mon mot de passe:</h2>
+
+      <div class="form-group">
+        <label class="form-label" for="lastPassword">Ancien mot de passe</label>
+        <input class="form-control" type="text" id="lastPassword" formControlName="lastPassword">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="newPassword">Nouveau mot de passe</label>
+        <input class="form-control" type="text" id="newPassword" formControlName="newPassword">
+      </div>
+
+      <button class="button-cyan rounded" type="submit" [disabled]="!passwordForm.valid">Changer mon mot de passe</button>
+    </form>
+
+
+  </div>
+
+</div>
