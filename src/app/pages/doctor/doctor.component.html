@@ -1,7 +1,39 @@
 <section id="panel">
-  <h2>Doctor pannel</h2>
-  <h3>All new potential clients</h3>
-  <ul>
-    <li *ngFor="let client of listClient">{{ client.firstname }}</li>
-  </ul>
+  <h1>Doctor pannel</h1>
+  <h2>All new potential patients</h2>
+  <div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  Patient
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Symptomes
+              </th>
+              <th scope="col" class="px-6 py-3">
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let diag of listDiagnosis" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ diag.patient.firstname }}
+                {{ diag.patient.lastname }}
+              </th>
+              <td class="px-6 py-4">
+                {{ diag.symptoms }}
+              </td>
+              <td class="px-6 py-4">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Diagnostiquer
+                </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<h2>My patients</h2>
+
 </section>

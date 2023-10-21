@@ -3,6 +3,8 @@ import {Flowbite} from "../../decorators/flowbite";
 import { UserDto } from '../../models/user.model';
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";  
+import { DiagnosisDto } from 'src/app/models/diagnosis.model';
+import { DiagnosisService } from 'src/app/services/diagnosis.service';
 
 @Component({
   selector: 'app-doctor',
@@ -11,14 +13,14 @@ import {UserService} from "../../services/user.service";
 })
 export class DoctorComponent implements OnInit {
  
-  listClient: UserDto[] = []; // Liste pour stocker les utilisateurs avec le rôle 'client'
+  listDiagnosis: DiagnosisDto[] = []; // Liste pour stocker les utilisateurs avec le rôle 'client'
 
   constructor(private authService : AuthService,
-              private userService: UserService) { }
+              private diagnosisService: DiagnosisService) { }
 
   ngOnInit() {
-    this.userService.showPatientsWithNoDoctor().subscribe(clients => {
-      this.listClient = clients;
+    this.diagnosisService.getDiagnosisNotValidated().subscribe(diag => {
+      this.listDiagnosis = diag;
     });
 
   }
