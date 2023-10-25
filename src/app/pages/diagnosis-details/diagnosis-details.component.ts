@@ -35,33 +35,36 @@ export class DiagnosisDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = parseInt(<string>this.route.snapshot.paramMap.get('id'), 10);
-    const userDetails$ = this.userService.getMyInfos();
-    const diagnosisDetails$ = this.diagnosisService.getDiagnosisById(id);
-
-    zip(userDetails$, diagnosisDetails$).subscribe(
-      ([userInfo, diagnosis]) => {
-        this.myInformations = userInfo;
-        this.diagnosis = diagnosis;
-
-        this.messageService.joinChat(this.myInformations.id!);
-
-        this.messageService.getMessageByDiagnosisId(this.diagnosis.id!).subscribe(messages => {
-          this.messages = messages.map(message => ({
-            authorFirstname: message.author.firstname,
-            content: message.content,
-          }));
-
-          this.messageService.getMessages().subscribe((message) => {
-            if (message.diagnosisId === this.diagnosis?.id) {
-              this.messages.push(message);
-            }
-          });
-        });
-      },
-      error => {
-        this.router.navigate(['/']).then(() => this.alertService.error(error.error.message));
+    zip(this.userService.getMyInfos(), this.diagnosisService.getDiagnosisById(id)).subscribe({
+        next: ([userInfo, diagnosis]) => {
+          this.myInformations = userInfo;
+          this.diagnosis = diagnosis;
+          this.messageService.joinChat(this.myInformations.id!);
+          this.fetchMessagesByDiagnosisId(this.diagnosis.id);
+          this.fetchSocketMessages(this.diagnosis.id);
+        },
+        error: (error) => {
+          this.router.navigate(['/']).then(() => this.alertService.error(error.error.message));
+        }
       }
     );
+  }
+
+  private fetchMessagesByDiagnosisId(diagnosisId: number) {
+    this.messageService.getMessagesByDiagnosisId(diagnosisId).subscribe(messages => {
+      this.messages = messages.map(message => ({
+        authorFirstname: message.author.firstname,
+        content: message.content,
+      }));
+    });
+  }
+
+  private fetchSocketMessages(diagnosisId: number) {
+    this.messageService.getMessages().subscribe((message) => {
+      if (message.diagnosisId === diagnosisId) {
+        this.messages.push(message);
+      }
+    });
   }
 
   ngAfterViewChecked(): void {

@@ -19,7 +19,7 @@ export class MessageService {
     this.socket.emit('message', message);
   }
 
-  public getMessages(): Observable<any> {
+  public getMessages(): Observable<MessageSocketDto> {
     return new Observable((observer) => {
       this.socket.on('newMessage', (message) => {
         observer.next(message);
@@ -31,7 +31,7 @@ export class MessageService {
     this.socket.emit('join', userId);
   }
 
-  public getMessageByDiagnosisId(diagnosisId: number): Observable<MessageDto[]> {
+  public getMessagesByDiagnosisId(diagnosisId: number): Observable<MessageDto[]> {
     return this.http.get<any>(this.apiUrl + '/messages/' + diagnosisId);
   }
 }
