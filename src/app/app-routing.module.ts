@@ -12,6 +12,7 @@ import {DisconnectedGuard} from "./guards/disconnected-guard";
 import {PatientGuard} from "./guards/patient-guard";
 import { DiagComponent } from "./pages/doctor/diag/diag.component";
 import {MyinfosComponent} from "./pages/myinfos/myinfos.component";
+import {DiagnosisDetailsComponent} from "./pages/diagnosis-details/diagnosis-details.component";
 
 const routes: Routes = [
   {
@@ -54,6 +55,11 @@ const routes: Routes = [
   {
     path: 'myinfos',
     component: MyinfosComponent,
+    canActivate: [ConnectedGuard]
+  },
+  {
+    path: 'diagnosis/:id',
+    component: DiagnosisDetailsComponent,
     canActivate: [ConnectedGuard]
   },
   {
