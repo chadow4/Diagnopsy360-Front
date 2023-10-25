@@ -18,6 +18,7 @@ import { HeaderComponent } from './shares/header/header.component';
 import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { MyinfosComponent } from './pages/myinfos/myinfos.component';
+import { DiagnosisDetailsComponent } from './pages/diagnosis-details/diagnosis-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MyinfosComponent } from './pages/myinfos/myinfos.component';
     HeaderComponent,
     QuestionnaireComponent,
     DoctorComponent,
-    MyinfosComponent
+    MyinfosComponent,
+    DiagnosisDetailsComponent
   ],
   imports: [
     BrowserModule,
