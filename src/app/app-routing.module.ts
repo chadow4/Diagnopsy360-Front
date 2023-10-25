@@ -10,6 +10,7 @@ import {DoctorGuard} from "./guards/doctor-guard";
 import {ConnectedGuard} from "./guards/connected-guard";
 import {DisconnectedGuard} from "./guards/disconnected-guard";
 import {PatientGuard} from "./guards/patient-guard";
+import { DiagComponent } from "./pages/doctor/diag/diag.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,13 @@ const routes: Routes = [
     path: 'doctor',
     component: DoctorComponent,
     canActivate: [ConnectedGuard,DoctorGuard]
+    
+  },
+  {
+    path: 'doctor/diag',
+    component: DiagComponent,
+    canActivate: [ConnectedGuard,DoctorGuard]
+    
   },
   {
     path: 'login',
