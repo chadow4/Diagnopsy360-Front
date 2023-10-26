@@ -26,7 +26,7 @@
               </td>
               <td class="px-6 py-4">
                 <button (click)="onButtonClick(diag.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Diagnostiquer    
+                  Diagnostiquer
                 </button>
               </td>
           </tr>
@@ -59,7 +59,7 @@
                 {{ mydiag.symptoms }}
               </td>
               <td class="px-6 py-4">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button [routerLink]="['/diagnosis',mydiag.id]" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   Discuter
                 </button>
               </td>

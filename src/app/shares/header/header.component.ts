@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
 
   isLoggedIn: boolean = false;
-  isAdmin: boolean = false;
+  isDoctor: boolean = false;
   myInformations!: UserDto;
 
   constructor(private authService: AuthService, private userService: UserService) {
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.authService.authStateChanged.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
-      this.isAdmin = this.authService.isDoctor();
+      this.isDoctor = this.authService.isDoctor();
     });
   }
 
