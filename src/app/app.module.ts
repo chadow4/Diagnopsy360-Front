@@ -19,6 +19,7 @@ import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.comp
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { MyinfosComponent } from './pages/myinfos/myinfos.component';
 import { DiagnosisDetailsComponent } from './pages/diagnosis-details/diagnosis-details.component';
+import {DiagComponent} from "./pages/doctor/diag/diag.component";
 
 @NgModule({
   declarations: [
@@ -30,8 +31,10 @@ import { DiagnosisDetailsComponent } from './pages/diagnosis-details/diagnosis-d
     HeaderComponent,
     QuestionnaireComponent,
     DoctorComponent,
+    DiagComponent,
+    MyinfosComponent,
+    DiagnosisDetailsComponent,
     DiagComponent
-    MyinfosComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +42,10 @@ import { DiagnosisDetailsComponent } from './pages/diagnosis-details/diagnosis-d
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [
     {

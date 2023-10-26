@@ -70,6 +70,7 @@ export class DiagComponent implements OnInit {
     this.treatmentService.getAllTreatments().subscribe(treat => {
       this.listeTreatment = treat;
     });
+
     
   }
 
