@@ -41,8 +41,8 @@ export class DiagnosisService {
     );
   }
 
-  public createResponseDiagnosis(id: number, responseDiagnosisDto: ResponseDiagnosisDto): Observable<any> {
-    return this.http.put<any>(this.user_API + 'response/' + id, responseDiagnosisDto);
+  public createResponseDiagnosis(idDIag: number, responseDiagnosisDto: ResponseDiagnosisDto): Observable<any> {
+    return this.http.put<any>(this.user_API + 'response/' + idDIag, responseDiagnosisDto);
   }
 
   public isPatientDiagnosticed(id: number): Observable<boolean> {

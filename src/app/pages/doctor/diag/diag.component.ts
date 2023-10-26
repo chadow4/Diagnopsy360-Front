@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { DiagnosisDto } from 'src/app/models/diagnosis.model';
+import { DiagnosisDto, ResponseDiagnosisDto } from 'src/app/models/diagnosis.model';
 import { DiagnosisService } from 'src/app/services/diagnosis.service';
-import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router";
-import { UserDto } from 'src/app/models/user.model';
 import {AlertService} from "src/app/services/alert.service";
+import { TreatmentDto } from 'src/app/models/treatment.model';
+import { TreatmentService } from 'src/app/services/treatment.service';
 
 
 @Component({
@@ -14,8 +14,11 @@ import {AlertService} from "src/app/services/alert.service";
   styleUrls: ['./diag.component.scss']
 })
 export class DiagComponent implements OnInit {
-  diag!: DiagnosisDto;
+  diag: DiagnosisDto | null = null;
+  listeTreatment: TreatmentDto[] = [];
   id: number = 0;
+  diagForm : ResponseDiagnosisDto = {diagnosisResponse:'', treatmentIds:[]};
+  selectedTreatments: { [id: number]: boolean } = {};
   diagnosticQuestions = [
       {
           questionText: "Comment vous sentez-vous en général?",
@@ -52,7 +55,8 @@ export class DiagComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private diagnosisService: DiagnosisService,
-              private alertService: AlertService) {} 
+              private alertService: AlertService,
+              private treatmentService: TreatmentService) {} 
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.queryParamMap.get('id'));
@@ -63,20 +67,30 @@ export class DiagComponent implements OnInit {
           () => this.alertService.error("Diagnosis already validated"));;
       }
     });
-     // Check for security and prevent bybass via GET
-    // this.diagnosisService.getDiagnosisNotValidated().subscribe(diag => {
-    //   this.listDiagnosis = diag;
-
-    //   const patientWithIdExists = this.listDiagnosis.some(d => d.patient && d.patient.id === this.id);
-  
-    //   if (patientWithIdExists) {
-    //     console.log(`Patient with ID ${this.id} exists in the diagnosis list.`);
-    //   } else {
-    //     console.log(`Patient with ID ${this.id} does NOT exist in the diagnosis list.`);
-    //     this.router.navigate(['doctor']);
-    //   }
-    // });
+    this.treatmentService.getAllTreatments().subscribe(treat => {
+      this.listeTreatment = treat;
+    });
+    
   }
-              
-            
+
+  onSubmit() {
+    this.diagnosisService.selectDoctorDiagnosis(this.id).subscribe(test => {
+      this.diagnosisService.createResponseDiagnosis(this.id, this.diagForm).subscribe({
+        next: (res) => {
+          this.router.navigate(['/doctor']).then(
+            () => this.alertService.success("Successfully sent"));
+        },
+        error: err => this.alertService.error(err.error.message)
+      });
+    });;
+  }
+
+  toggleSelection(treatment: TreatmentDto) {
+    const index = this.diagForm.treatmentIds.indexOf(treatment.id);
+    if (index === -1) {
+        this.diagForm.treatmentIds.push(treatment.id);
+    } else {
+        this.diagForm.treatmentIds.splice(index, 1);
+    }
+}
 }

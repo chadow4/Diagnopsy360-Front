@@ -1,26 +1,55 @@
 <section id="panel">
   <h1>Pannel de diagnosis</h1>
   <h2>Infos clients</h2>
-  <div class="container mx-auto p-6 font-sans flex flex-col items-center justify-cente">
+  <div class="container mx-auto p-6 font-sans flex flex-col items-center justify-center">
     <div class="rounded-lg border-2 border-gray-200 w-full md:w-8/12 mx-auto h-auto">
       <div class="bg-gray-200 text-center rounded-t-lg py-2 text-xl font-bold">
-        <h1>Patient {{diag.patient.lastname}} {{diag.patient.firstname}}</h1>
+        <h1>Patient {{diag?.patient?.lastname}} {{diag?.patient?.firstname}}</h1>
       </div>
   
       <div class="p-4 bg-white rounded shadow-md">
         <h2 class="text-2xl font-bold mb-4">Résumé du Diagnostic</h2>
         
-        <div *ngFor="let question of diagnosticQuestions; let i = index">
+        <div *ngFor="let symptom of diag?.symptoms; let i = index">
           <div class="mb-3">
-            <p class="text-lg font-medium">{{ question.questionText }}</p>
+            <p class="text-lg font-medium">{{ diagnosticQuestions[i].questionText }}</p>
             
-            <p class="text-sm text-gray-700 bg-gray-100 p-2 rounded mt-1" *ngIf="diag.symptoms[i]">
-              Réponse: {{ diag.symptoms[i] }}
-            </p>
+            <p class="text-sm text-gray-700 bg-gray-100 p-2 rounded mt-1">
+              Réponse: {{ symptom }}
+            </p>           
           </div>
         </div>
+
       </div>
-      
     </div>
+    <form class="flex justify-center items-center flex-col rounded" (ngSubmit)="onSubmit()">
+      <div class="rounded-lg border-2 w-full max-w-md bg-white p-4 rounded shadow-md mt-5">
+      
+        <div class="mb-6">
+          <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Entrer votre diagnostique ici:</label>
+          <input type="text" id="large-input" name="diagnosisResponse" [(ngModel)]="diagForm.diagnosisResponse" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+
+        <label class="block text-gray-700 text-lg font-bold mb-4">
+            Sélectionnez les traitements:
+        </label>
+
+        <div class="mb-3" *ngFor="let treatment of listeTreatment">
+          <label class="inline-flex items-center">
+              <input type="checkbox"
+                     class="form-checkbox text-blue-500 h-5 w-5"
+                     [checked]="diagForm.treatmentIds.includes(treatment.id)"
+                     (change)="toggleSelection(treatment)">
+              <span class="ml-2 text-gray-700">{{ treatment.name }}</span>
+          </label>
+      </div>   
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue mt-4" type="submit">
+            Valider
+        </button>
+      </div>
+      </form>
 </div>
+
+
 </section>
