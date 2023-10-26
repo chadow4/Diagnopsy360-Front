@@ -17,6 +17,12 @@
       <li *ngIf="isLoggedIn">
         <a [routerLink]="['myinfos']" href="#" class="hover:text-blue-700" aria-current="page">Mon Compte</a>
       </li>
+      <li *ngIf="isLoggedIn && isDoctor">
+        <a [routerLink]="['doctor']" href="#" class="hover:text-blue-700" aria-current="page">Pannel Docteur</a>
+      </li>
+      <li *ngIf="isLoggedIn && !isDoctor">
+        <a [routerLink]="['mydiagnosis']" href="#" class="hover:text-blue-700" aria-current="page">Mes diagnostiques</a>
+      </li>
       <li *ngIf="isLoggedIn">
         <a (click)="logout()" href="#" class="hover:text-blue-700" aria-current="page">Deconnexion</a>
       </li>
