@@ -61,7 +61,7 @@ export class DiagnosisDetailsComponent implements OnInit {
 
   private fetchSocketMessages(diagnosisId: number) {
     this.messageService.getMessages().subscribe((message) => {
-      if (message.diagnosisId === diagnosisId) {
+      if (message.diagnosisId ! == this.diagnosis?.id) {
         this.messages.push(message);
       }
     });
@@ -84,15 +84,25 @@ export class DiagnosisDetailsComponent implements OnInit {
 
   sendMessage(): void {
     if (this.newMessageContent.trim()) {
+      let destinationId: number;
+
+      if (this.myInformations?.role === "doctor") {
+        destinationId = this.diagnosis!.patient.id;
+      } else {
+        destinationId = this.diagnosis!.doctor.id;
+      }
 
       const messageSocket: MessageSocketDto = {
         authorId: this.myInformations!.id,
         content: this.newMessageContent,
         diagnosisId: this.diagnosis!.id,
         authorFirstname: this.myInformations!.firstname,
-      }
+        destinationId: destinationId
+      };
+
       this.messageService.sendMessage(messageSocket);
       this.newMessageContent = '';
     }
   }
+
 }

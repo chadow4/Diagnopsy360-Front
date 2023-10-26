@@ -19,4 +19,5 @@ export interface MessageSocketDto{
   content: string;
   diagnosisId: number;
   authorFirstname: string;
+  destinationId: number;
 }

@@ -28,6 +28,7 @@ export class MessageService {
   }
 
   public joinChat(userId: number): void {
+    console.log("blop")
     this.socket.emit('join', userId);
   }
 
