@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
-import {UserJwtSessionDto} from "../../models/user.model";
+import {UserDto} from "../../models/user.model";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-header',
@@ -12,16 +13,15 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
-  mySession!: UserJwtSessionDto | null;
+  myInformations!: UserDto;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private userService: UserService) {
   }
 
   ngOnInit() {
-    this.authService.authStateChanged.subscribe((isLoggedin) => {
-      this.isLoggedIn = isLoggedin;
+    this.authService.authStateChanged.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
       this.isAdmin = this.authService.isDoctor();
-      this.mySession = this.authService.getCurrentSession();
     });
   }
 

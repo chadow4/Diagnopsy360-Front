@@ -15,7 +15,7 @@
         <a [routerLink]="['register']" href="#" class="hover:text-blue-700" aria-current="page">Inscription</a>
       </li>
       <li *ngIf="isLoggedIn">
-        <a>{{mySession?.email}}</a>
+        <a [routerLink]="['myinfos']" href="#" class="hover:text-blue-700" aria-current="page">Mon Compte</a>
       </li>
       <li *ngIf="isLoggedIn">
         <a (click)="logout()" href="#" class="hover:text-blue-700" aria-current="page">Deconnexion</a>

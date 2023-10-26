@@ -10,7 +10,7 @@ import {UserCreateDto} from "../../models/user.model";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  registerForm: any = {firstname: '', lastname: '', email: '', password: ''};
+  registerForm: UserCreateDto = {firstname: '', lastname: '', email: '', password: ''};
 
 
   constructor(private authService: AuthService,
@@ -19,8 +19,7 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    const userRegister = this.registerForm as UserCreateDto;
-    this.authService.register(userRegister).subscribe({
+    this.authService.register(this.registerForm).subscribe({
       next: (res) => {
         this.router.navigate(['login']).then(
           () => this.alertService.success(res.message));

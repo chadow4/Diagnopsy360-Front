@@ -17,7 +17,8 @@ import {AuthInterceptor} from "./interceptors/auth-interceptor";
 import { HeaderComponent } from './shares/header/header.component';
 import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
-import { DiagComponent } from './pages/doctor/diag/diag.component';
+import { MyinfosComponent } from './pages/myinfos/myinfos.component';
+import { DiagnosisDetailsComponent } from './pages/diagnosis-details/diagnosis-details.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DiagComponent } from './pages/doctor/diag/diag.component';
     QuestionnaireComponent,
     DoctorComponent,
     DiagComponent
+    MyinfosComponent
   ],
   imports: [
     BrowserModule,
