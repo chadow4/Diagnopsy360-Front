@@ -11,7 +11,7 @@ import {AlertService} from "../../services/alert.service";
 })
 export class LoginComponent {
 
-  loginForm : any = {email:'', password:''};
+  loginForm: UserLoginDto = {email:'', password:''};
 
 
   constructor(private authService : AuthService,
@@ -24,8 +24,7 @@ export class LoginComponent {
 
 
   onSubmit() {
-    const userLogin = this.loginForm as UserLoginDto;
-    this.authService.login(userLogin).subscribe({
+    this.authService.login(this.loginForm).subscribe({
       next: (res) => {
         this.router.navigate(['/']).then(
           () => this.alertService.success("You are logged in"));
