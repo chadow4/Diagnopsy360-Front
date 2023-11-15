@@ -61,7 +61,7 @@ export class DiagnosisDetailsComponent implements OnInit {
 
   private fetchSocketMessages(diagnosisId: number) {
     this.messageService.getMessages().subscribe((message) => {
-      if (message.diagnosisId ! == this.diagnosis?.id) {
+      if (message.diagnosisId === this.diagnosis?.id) {
         this.messages.push(message);
       }
     });
