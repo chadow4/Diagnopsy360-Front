@@ -1,0 +1,52 @@
+<section class="md:container text-center p-16 mx-auto dark:bg-gray-900 dark:text-dark" id="panel">
+  <p class="text-3xl mb-4">Mes diagnostics</p>
+
+  <!-- Diagnostics en cours de traitement -->
+  <h2 class="text-xl mb-2">Mes diagnostics en cours de traitement :</h2>
+  <div class="overflow-x-auto p-5">
+    <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400 mb-5">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
+      <tr>
+        <th class="px-4 py-2">Identifiant</th>
+        <th class="px-4 py-2">Date</th>
+        <th class="px-4 py-2">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let diag of diagnosisNotValidated" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td class="px-4 py-2 font-medium">#{{ diag.id }}</td>
+        <td class="px-4 py-2 font-medium">En traitement</td>
+        <td class="px-4 py-2">
+          <!-- Ajoutez ici les actions pour les diagnostics en cours de traitement -->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Diagnostics validés -->
+  <h2 class="text-xl mb-2">Mes diagnostics :</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
+      <tr>
+        <th class="px-4 py-2">Identifiant</th>
+        <th class="px-4 py-2">Date</th>
+        <th class="px-4 py-2">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let mydiag of diagnosisValidated" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td class="px-4 py-2 font-medium">#{{ mydiag.id }}</td>
+        <td class="px-4 py-2 font-medium">{{ mydiag.diagnosisDate }}</td>
+        <td class="px-4 py-2">
+          <button [routerLink]="['/diagnosis', mydiag.id]"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+            Détails du diagnostic
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

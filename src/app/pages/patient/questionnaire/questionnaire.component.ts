@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AlertService} from "../../services/alert.service";
-import {DiagnosisService} from "../../services/diagnosis.service";
-import {SendSymtomsDiagnosisDto} from "../../models/diagnosis.model";
+import {AlertService} from "../../../services/alert.service";
+import {DiagnosisService} from "../../../services/diagnosis.service";
+import {SendSymtomsDiagnosisDto} from "../../../models/diagnosis.model";
 
 @Component({
     selector: 'app-questionnaire',

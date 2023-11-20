@@ -4,7 +4,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
-import {QuestionnaireComponent} from "./pages/questionnaire/questionnaire.component";
+import {QuestionnaireComponent} from "./pages/patient/questionnaire/questionnaire.component";
 import {DoctorComponent} from "./pages/doctor/doctor.component";
 import {DoctorGuard} from "./guards/doctor-guard";
 import {ConnectedGuard} from "./guards/connected-guard";
@@ -13,6 +13,7 @@ import {PatientGuard} from "./guards/patient-guard";
 import { DiagComponent } from "./pages/doctor/diag/diag.component";
 import {MyinfosComponent} from "./pages/myinfos/myinfos.component";
 import {DiagnosisDetailsComponent} from "./pages/diagnosis-details/diagnosis-details.component";
+import {MyDiagnosisComponent} from "./pages/patient/my-diagnosis/my-diagnosis.component";
 
 const routes: Routes = [
   {
@@ -29,13 +30,13 @@ const routes: Routes = [
     path: 'doctor',
     component: DoctorComponent,
     canActivate: [ConnectedGuard,DoctorGuard]
-    
+
   },
   {
     path: 'doctor/diag',
     component: DiagComponent,
     canActivate: [ConnectedGuard,DoctorGuard]
-    
+
   },
   {
     path: 'login',
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path: 'diagnosis/:id',
     component: DiagnosisDetailsComponent,
+    canActivate: [ConnectedGuard]
+  },
+  {
+    path: 'mydiagnosis',
+    component: MyDiagnosisComponent,
     canActivate: [ConnectedGuard]
   },
   {
