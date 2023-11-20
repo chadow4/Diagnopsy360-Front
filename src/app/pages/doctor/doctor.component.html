@@ -1,70 +1,63 @@
-<section id="panel">
-  <h1>Doctor pannel</h1>
-  <h2>All new potential patients</h2>
-  <div class="relative overflow-x-auto">
-  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-              <th scope="col" class="px-6 py-3">
-                  Patient
-              </th>
-              <th scope="col" class="px-6 py-3">
-                  Symptomes
-              </th>
-              <th scope="col" class="px-6 py-3">
-              </th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let diag of listDiagnosis" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ diag.patient.firstname }}
-                {{ diag.patient.lastname }}
-              </th>
-              <td class="px-6 py-4">
-                {{ diag.symptoms }}
-              </td>
-              <td class="px-6 py-4">
-                <button (click)="onButtonClick(diag.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Diagnostiquer
-                </button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+<section class="md:container mx-auto p-16 dark:bg-gray-900 dark:text-white" id="panel">
+  <p class="text-3xl mb-4">Pannel Docteur</p>
 
-<h2>My patients</h2>
-<div class="relative overflow-x-auto">
-  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-              <th scope="col" class="px-6 py-3">
-                  Patient
-              </th>
-              <th scope="col" class="px-6 py-3">
-                  Symptomes
-              </th>
-              <th scope="col" class="px-6 py-3">
-              </th>
-          </tr>
+  <!-- Nouveaux Patients -->
+  <h2 class="text-xl mb-2">Nouveaux Patients :</h2>
+  <div class="relative overflow-x-auto">
+    <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400 mb-5">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th class="px-4 py-2">Patient</th>
+        <th class="px-4 py-2"></th>
+      </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let mydiag of myPatients" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ mydiag.patient.firstname }}
-                {{ mydiag.patient.lastname }}
-              </th>
-              <td class="px-6 py-4">
-                {{ mydiag.symptoms }}
-              </td>
-              <td class="px-6 py-4">
-                <button [routerLink]="['/diagnosis',mydiag.id]" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Discuter
-                </button>
-              </td>
-          </tr>
+      <tr *ngFor="let diag of listDiagnosis" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td class="px-4 py-2 font-medium whitespace-nowrap">
+          {{ diag.patient.firstname }} {{ diag.patient.lastname }}
+        </td>
+        <td class="px-4 py-2">
+          <button (click)="onButtonClick(diag.id)"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+            Diagnostiquer
+          </button>
+        </td>
+      </tr>
       </tbody>
-  </table>
-</div>
+    </table>
+  </div>
+
+  <!-- My patients -->
+  <h2 class="text-xl mb-2">My patients</h2>
+  <div class="relative overflow-x-auto">
+    <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th class="px-4 py-2">Patient</th>
+        <th class="px-4 py-2">Date</th>
+        <th class="px-4 py-2">Conclusion</th>
+        <th class="px-4 py-2"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let mydiag of myPatients" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td class="px-4 py-2 font-medium whitespace-nowrap">
+          {{ mydiag.patient.firstname }} {{ mydiag.patient.lastname }}
+        </td>
+        <td class="px-4 py-2">
+          {{ mydiag.diagnosisDate }}
+        </td>
+        <td class="px-4 py-2">
+          {{ mydiag.diagnosisResponse }}
+        </td>
+        <td class="px-4 py-2">
+          <button [routerLink]="['/diagnosis', mydiag.id]"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+            Détails / Discuter avec le patient
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

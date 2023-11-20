@@ -1,7 +1,7 @@
 <nav class="flex justify-between items-center px-5 md:px-20 lg:px-40 py-5 border-b-4">
 
   <div routerLink="/home" class="flex items-center justify-center cursor-pointer mt-2">
-    <h1 class="text-8xl font-bold pt-2">DiagnoPsy360</h1>
+    <p class="text-3xl font-bold pt-2">DiagnoPsy360</p>
   </div>
   <div class="hidden md:flex gap-20 items-center justify-center">
     <ul class="flex gap-5">
@@ -21,7 +21,7 @@
         <a [routerLink]="['doctor']" href="#" class="hover:text-blue-700" aria-current="page">Pannel Docteur</a>
       </li>
       <li *ngIf="isLoggedIn && !isDoctor">
-        <a [routerLink]="['mydiagnosis']" href="#" class="hover:text-blue-700" aria-current="page">Mes diagnostiques</a>
+        <a [routerLink]="['mydiagnosis']" href="#" class="hover:text-blue-700" aria-current="page">Mes diagnostics</a>
       </li>
       <li *ngIf="isLoggedIn">
         <a (click)="logout()" href="#" class="hover:text-blue-700" aria-current="page">Deconnexion</a>
@@ -52,19 +52,39 @@
     Navigation
   </h1>
   <ul class="flex flex-col space-y-4">
+    <!-- Accueil -->
     <li>
       <a data-drawer-hide="drawer" [routerLink]="['home']" href="#"
          class="button-white hover:bg-blue-200 block">Accueil</a>
     </li>
+
+    <!-- Connexion (si non connecté) -->
     <li *ngIf="!isLoggedIn">
       <a data-drawer-hide="drawer" [routerLink]="['login']" href="#" class="button-white hover:bg-blue-200 block">Connexion</a>
     </li>
+
+    <!-- Inscription (si non connecté) -->
     <li *ngIf="!isLoggedIn">
       <a data-drawer-hide="drawer" [routerLink]="['register']" href="#" class="button-white hover:bg-blue-200 block">Inscription</a>
     </li>
+
+    <!-- Déconnexion (si connecté) -->
     <li *ngIf="isLoggedIn">
       <a data-drawer-hide="drawer" (click)="logout()" href="#"
          class="button-white hover:bg-blue-200 block">Deconnexion</a>
+    </li>
+
+    <li *ngIf="isLoggedIn">
+      <a data-drawer-hide="drawer" [routerLink]="['myinfos']" href="#" class="button-white hover:bg-blue-200 block">Mon Compte</a>
+    </li>
+    <!-- Pannel Docteur (si connecté en tant que docteur) -->
+    <li *ngIf="isLoggedIn && isDoctor">
+      <a data-drawer-hide="drawer" [routerLink]="['doctor']" href="#" class="button-white hover:bg-blue-200 block">Pannel Docteur</a>
+    </li>
+
+    <!-- Mes diagnostics (si connecté en tant que patient) -->
+    <li *ngIf="isLoggedIn && !isDoctor">
+      <a data-drawer-hide="drawer" [routerLink]="['mydiagnosis']" href="#" class="button-white hover:bg-blue-200 block">Mes diagnostics</a>
     </li>
   </ul>
 
@@ -74,6 +94,6 @@
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
     </svg>
-    <span class="sr-only">Close menu</span>
+    <span class="sr-only">Fermer le menu</span>
   </button>
 </div>

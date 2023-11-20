@@ -15,11 +15,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./interceptors/auth-interceptor";
 import { HeaderComponent } from './shares/header/header.component';
-import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.component';
+import { QuestionnaireComponent } from './pages/patient/questionnaire/questionnaire.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { MyinfosComponent } from './pages/myinfos/myinfos.component';
 import { DiagnosisDetailsComponent } from './pages/diagnosis-details/diagnosis-details.component';
 import {DiagComponent} from "./pages/doctor/diag/diag.component";
+import { MyDiagnosisComponent } from './pages/patient/my-diagnosis/my-diagnosis.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {DiagComponent} from "./pages/doctor/diag/diag.component";
     DiagComponent,
     MyinfosComponent,
     DiagnosisDetailsComponent,
-    DiagComponent
+    DiagComponent,
+    MyDiagnosisComponent
   ],
   imports: [
     BrowserModule,

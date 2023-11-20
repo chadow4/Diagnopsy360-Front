@@ -33,12 +33,16 @@ export class DiagnosisService {
   }
 
   public selectMyPatientDiagnosis(): Observable<DiagnosisDto[]> {
-    return this.http.get<DiagnosisDto[]>(this.user_API + 'mydiags/').pipe(
+    return this.http.get<DiagnosisDto[]>(this.user_API + 'mypatientsdiags/').pipe(
       catchError(error => {
         console.error('Erreur lors de la récupération des diagnostics:', error);
         return throwError(error);
       })
     );
+  }
+
+  public getMyDiagnosis(): Observable<DiagnosisDto[]> {
+    return this.http.get<DiagnosisDto[]>(this.user_API + 'mydiags/');
   }
 
   public createResponseDiagnosis(idDIag: number, responseDiagnosisDto: ResponseDiagnosisDto): Observable<any> {

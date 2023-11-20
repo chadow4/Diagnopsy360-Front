@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {API_URL} from "./config";
 import {Observable} from "rxjs";
-import {UserDto, UserUpdateDto, UserUpdatePasswordDto} from "../models/user.model";
+import {DoctorDto, PatientDto, UserDto, UserUpdateDto, UserUpdatePasswordDto} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,10 @@ export class UserService {
     return this.http.get<UserDto[]>(this.user_API);
   }
 
-  public getMyInfos(): Observable<UserDto> {
-    return this.http.get<UserDto>(this.user_API + 'myinfos');
+  public getMyInfos(): Observable<PatientDto | DoctorDto> {
+    return this.http.get<PatientDto | DoctorDto>(this.user_API + 'myinfos');
   }
+
 
   public getUserById(id: number): Observable<UserDto> {
     return this.http.get<UserDto>(this.user_API + id);
