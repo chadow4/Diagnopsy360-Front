@@ -9,7 +9,7 @@ import { DiagnosisService } from 'src/app/services/diagnosis.service';
   styleUrls: ['./doctor.component.scss']
 })
 export class DoctorComponent implements OnInit {
- 
+
   listDiagnosis: DiagnosisDto[] = []; // Liste pour stocker les utilisateurs avec le rôle 'client'
   myPatients: DiagnosisDto[] = []; // Liste pour stocker les utilisateurs avec le rôle 'client'
   myId: number = 0;
@@ -32,6 +32,6 @@ export class DoctorComponent implements OnInit {
       id: clickId
     }});
   }
-              
-            
+
+
 }
