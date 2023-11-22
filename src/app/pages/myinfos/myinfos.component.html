@@ -31,12 +31,12 @@
 
       <div class="form-group">
         <label class="form-label" for="lastPassword">Ancien mot de passe</label>
-        <input class="form-control" type="text" id="lastPassword" formControlName="lastPassword">
+        <input class="form-control" type="password" id="lastPassword" formControlName="lastPassword">
       </div>
 
       <div class="form-group">
         <label class="form-label" for="newPassword">Nouveau mot de passe</label>
-        <input class="form-control" type="text" id="newPassword" formControlName="newPassword">
+        <input class="form-control" type="password" id="newPassword" formControlName="newPassword">
       </div>
 
       <button class="button-purple rounded" type="submit" [disabled]="!passwordForm.valid">Changer mon mot de passe</button>
