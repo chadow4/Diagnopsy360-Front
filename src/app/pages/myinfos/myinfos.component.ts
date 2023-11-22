@@ -30,8 +30,8 @@ export class MyinfosComponent implements OnInit {
       lastname: ['', Validators.required],
     });
     this.passwordForm = this.formBuilder.group({
-      lastPassword: ['', [Validators.required, Validators.minLength(6)]],
-      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      lastPassword: ['', [Validators.required, Validators.minLength(4)]],
+      newPassword: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
