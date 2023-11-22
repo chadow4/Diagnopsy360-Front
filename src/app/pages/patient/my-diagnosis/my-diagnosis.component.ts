@@ -9,8 +9,8 @@ import {DiagnosisService} from "../../../services/diagnosis.service";
 })
 export class MyDiagnosisComponent implements OnInit {
 
-  diagnosisValidated!: DiagnosisDto[];
-  diagnosisNotValidated!: DiagnosisDto[];
+  diagnosisValidated: DiagnosisDto[] = [];
+  diagnosisNotValidated: DiagnosisDto[] = [];
 
   constructor(private diagnosisService: DiagnosisService) {
   }
