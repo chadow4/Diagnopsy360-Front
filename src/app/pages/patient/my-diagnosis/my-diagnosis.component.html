@@ -3,7 +3,7 @@
 
   <!-- Diagnostics en cours de traitement -->
   <h2 class="text-xl">Mes diagnostics en cours de traitement :</h2>
-  <div class="overflow-x-auto p-5">
+  <div *ngIf="diagnosisNotValidated.length > 0; else noDiagnosisInProgress" class="overflow-x-auto p-5">
     <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400 mb-5">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
       <tr>
@@ -13,6 +13,7 @@
       </tr>
       </thead>
       <tbody>
+
       <tr *ngFor="let diag of diagnosisNotValidated" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <td class="px-4 py-2 font-medium">#{{ diag.id }}</td>
         <td class="px-4 py-2 font-medium">En traitement</td>
@@ -21,12 +22,16 @@
         </td>
       </tr>
       </tbody>
+
     </table>
   </div>
+  <ng-template #noDiagnosisInProgress>
+    <p class="text-gray-500 dark:text-gray-400 badge-purple">Vous n'avez pas de diagnostic en attente de traitement.</p>
+  </ng-template>
 
   <!-- Diagnostics validés -->
   <h2 class="text-xl mb-2">Mes diagnostics :</h2>
-  <div class="overflow-x-auto">
+  <div *ngIf="diagnosisNotValidated.length > 0; else noDiagnosisValidated" class="overflow-x-auto">
     <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
       <tr>
@@ -49,4 +54,7 @@
       </tbody>
     </table>
   </div>
+  <ng-template #noDiagnosisValidated>
+    <p class="text-gray-500 dark:text-gray-400 badge-purple">Vous n'avez pas de diagnostic traités.</p>
+  </ng-template>
 </section>
