@@ -20,7 +20,7 @@
   justify-content: space-between;
   padding: 10px;
   background: #eee;
-  color: #666;
+  @apply bg-purple-500;
   border: var(--border);
 }
 
@@ -113,15 +113,15 @@
 
 .msger-send-btn {
   margin-left: 10px;
-  background: rgb(0, 196, 65);
-  color: #fff;
+  @apply bg-purple-500;
   font-weight: bold;
+  color: white;
   cursor: pointer;
   transition: background 0.23s;
 }
 
 .msger-send-btn:hover {
-  background: rgb(0, 180, 50);
+  @apply bg-purple-600;
 }
 
 .msger-chat {
