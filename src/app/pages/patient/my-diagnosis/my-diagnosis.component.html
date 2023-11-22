@@ -31,7 +31,7 @@
 
   <!-- Diagnostics validés -->
   <h2 class="text-xl mb-2">Mes diagnostics :</h2>
-  <div *ngIf="diagnosisNotValidated.length > 0; else noDiagnosisValidated" class="overflow-x-auto">
+  <div *ngIf="diagnosisValidated.length > 0; else noDiagnosisValidated" class="overflow-x-auto">
     <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
       <tr>
@@ -55,6 +55,6 @@
     </table>
   </div>
   <ng-template #noDiagnosisValidated>
-    <p class="text-gray-500 dark:text-gray-400 badge-purple">Vous n'avez pas de diagnostic traités.</p>
+    <p class="text-gray-500 dark:text-gray-400 badge-purple">Vous n'avez pas de diagnostic traité.</p>
   </ng-template>
 </section>
