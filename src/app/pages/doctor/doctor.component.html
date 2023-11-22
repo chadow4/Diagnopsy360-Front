@@ -3,7 +3,7 @@
 
   <!-- Nouveaux Patients -->
   <h2 class="text-xl mb-2">Nouveaux Patients :</h2>
-  <div class="relative overflow-x-auto">
+  <div *ngIf="listDiagnosis.length > 0; else noNewPatients" class="relative overflow-x-auto">
     <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400 mb-5">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
       <tr>
@@ -26,10 +26,14 @@
       </tbody>
     </table>
   </div>
+  <ng-template #noNewPatients>
+    <p class="text-gray-500 dark:text-gray-400 badge-purple">Il n'y a pas de patients en attente de diagnostique.</p>
+  </ng-template>
+
 
   <!-- My patients -->
   <h2 class="text-xl mb-2">My patients</h2>
-  <div class="relative overflow-x-auto">
+  <div *ngIf="myPatients.length > 0 else noPatients" class="relative overflow-x-auto">
     <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
       <tr>
@@ -60,4 +64,7 @@
       </tbody>
     </table>
   </div>
+  <ng-template #noPatients>
+    <p class="text-gray-500 dark:text-gray-400 badge-purple">Vous n'avez pas encore traité de patients.</p>
+  </ng-template>
 </section>
