@@ -1,9 +1,9 @@
-<div class="container p-16 mx-auto">
+<div class="container mx-auto">
   <div class="grid place-items-center">
     <p class="text-3xl">Mon profil</p>
-    <div class="border text-center p-5 font-extrabold my-5 md:px-20 md:py-10">
+    <div class="border-2 border-purple-500 text-center p-5 font-extrabold my-5 md:px-20 md:py-10">
       <p>Vous pouvez modifier vos informations personnelles ici.</p>
-      <p>Si vous souhaitez changer votre mot de passe, <button class="button-cyan" (click)="showPasswordForm = !showPasswordForm">cliquez ici</button></p>
+      <p>Si vous souhaitez changer votre mot de passe, <button class="button-purple" (click)="showPasswordForm = !showPasswordForm">cliquez ici</button></p>
     </div>
 
     <form class="grid place-items-center w-full md:w-6/12 my-5" [formGroup]="userForm" (ngSubmit)="updateUserInfos()">
@@ -22,7 +22,7 @@
         <label class="form-label" for="email">Email</label>
         <input class="form-control" type="email" id="email" formControlName="email">
       </div>
-      <button class="button-cyan rounded" type="submit" [disabled]="!userForm.valid">Mettre à jour mes informations</button>
+      <button class="button-purple rounded" type="submit" [disabled]="!userForm.valid">Mettre à jour mes informations</button>
     </form>
 
 
@@ -39,7 +39,7 @@
         <input class="form-control" type="text" id="newPassword" formControlName="newPassword">
       </div>
 
-      <button class="button-cyan rounded" type="submit" [disabled]="!passwordForm.valid">Changer mon mot de passe</button>
+      <button class="button-purple rounded" type="submit" [disabled]="!passwordForm.valid">Changer mon mot de passe</button>
     </form>
 
 

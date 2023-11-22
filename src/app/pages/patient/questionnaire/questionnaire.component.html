@@ -1,12 +1,12 @@
 <div class="container">
   <div *ngIf="!qcmStarted && !isFinished" class="flex flex-col justify-center items-center">
-    <h1 class="text-center font-bold">Questionnaire de diagonistique Psychologique</h1>
-    <button (click)="startQcm()" type="button" class="button-cyan">Commencer le Questionnaire</button>
+    <p class="text-center font-bold text-2xl">Questionnaire de diagonistique Psychologique</p>
+    <button (click)="startQcm()" type="button" class="button-purple">Commencer le Questionnaire</button>
   </div>
 
 
-  <form class="card  p-5" *ngIf="!isFinished && qcmStarted" (ngSubmit)="goToNextQuestion()">
-    <h2 class="fw-bold text-8xl text-center">Question {{currentQuestionIndex + 1 }}: {{diagnosticQuestions[currentQuestionIndex].questionText}}</h2>
+  <form class="card text-gray-600 p-5" *ngIf="!isFinished && qcmStarted" (ngSubmit)="goToNextQuestion()">
+    <p class="fw-bold text-2xl text-center">Question {{currentQuestionIndex + 1 }}: {{diagnosticQuestions[currentQuestionIndex].questionText}}</p>
 
     <div class="my-2" *ngFor="let option of diagnosticQuestions[currentQuestionIndex].options">
       <div class="form-check">
@@ -19,8 +19,8 @@
     </div>
 
     <div class="mt-3">
-      <a class="button-cyan me-2 cursor-pointer" (click)="goToPreviousQuestion()">⏮️ Question Précédente</a>
-      <button type="submit" class="button-cyan">
+      <a class="button-purple me-2 cursor-pointer" (click)="goToPreviousQuestion()">⏮️ Question Précédente</a>
+      <button type="submit" class="button-purple">
         {{ currentQuestionIndex + 1 < totalQuestions ? "Question suivante ⏭️" : "Terminer le QCM" }}
       </button>
 
@@ -34,13 +34,13 @@
         </span>
       </div>
     </div>
-    <em class="mt-4 badge-indigo mt-10"><b>NB</b> : Les questions qui sont répondues apparaissent en bleu (il es biensur possible de modifier leurs valeurs)</em>
+    <em class="badge-indigo mt-10"><b>NB</b> : Les questions qui sont répondues apparaissent en bleu (il es biensur possible de modifier leurs valeurs)</em>
   </form>
 
 
   <div *ngIf="isFinished" class="flex flex-col justify-center items-center">
-    <h1>Résultats :</h1>
-    <button (click)="sendResponses()" class="button-cyan">Envoyer résultat</button>
+    <p class="text-2xl">Résultats :</p>
+    <button (click)="sendResponses()" class="button-purple">Envoyer résultat</button>
 
   </div>
 

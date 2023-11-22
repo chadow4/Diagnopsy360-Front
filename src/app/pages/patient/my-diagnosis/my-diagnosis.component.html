@@ -1,8 +1,8 @@
-<section class="md:container text-center p-16 mx-auto dark:bg-gray-900 dark:text-dark" id="panel">
-  <p class="text-3xl mb-4">Mes diagnostics</p>
+<section class="container text-center  dark:bg-gray-900 dark:text-dark" id="panel">
+  <p class="text-3xl">Mes diagnostics</p>
 
   <!-- Diagnostics en cours de traitement -->
-  <h2 class="text-xl mb-2">Mes diagnostics en cours de traitement :</h2>
+  <h2 class="text-xl">Mes diagnostics en cours de traitement :</h2>
   <div class="overflow-x-auto p-5">
     <table class="w-full table-auto text-sm text-gray-500 dark:text-gray-400 mb-5">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
@@ -41,7 +41,7 @@
         <td class="px-4 py-2 font-medium">{{ mydiag.diagnosisDate }}</td>
         <td class="px-4 py-2">
           <button [routerLink]="['/diagnosis', mydiag.id]"
-                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+                  class="button-purple text-white font-bold py-1 px-3 rounded">
             Détails du diagnostic
           </button>
         </td>

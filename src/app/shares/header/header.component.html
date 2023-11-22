@@ -1,4 +1,4 @@
-<nav class="flex justify-between items-center px-5 md:px-20 lg:px-40 bg-purplebackround text-white">
+<nav class="flex justify-between items-center px-5 md:px-20 lg:px-40 p-1 text-white">
 
   <div routerLink="/home" class="flex items-center justify-center cursor-pointer mt-2">
     <img src="/assets/img/logo.png" alt="DiagnoPsy360 Logo" class="h-32">
@@ -6,25 +6,25 @@
   <div class="hidden md:flex gap-20 items-center justify-center">
     <ul class="flex gap-5">
       <li>
-        <a [routerLink]="['home']" routerLinkActive="active" href="#" class="hover:text-blue-700" aria-current="page">Accueil</a>
+        <a [routerLink]="['home']" routerLinkActive="active" href="#" class="hover:text-purple-500" aria-current="page">Accueil</a>
       </li>
       <li *ngIf="!isLoggedIn">
-        <a [routerLink]="['login']" routerLinkActive="active" href="#" class="hover:text-blue-700" aria-current="page">Connexion</a>
+        <a [routerLink]="['login']" routerLinkActive="active" href="#" class="hover:text-purple-500" aria-current="page">Connexion</a>
       </li>
       <li *ngIf="!isLoggedIn">
-        <a [routerLink]="['register']" href="#" class="hover:text-blue-700" aria-current="page">Inscription</a>
+        <a [routerLink]="['register']" href="#" class="hover:text-purple-500" aria-current="page">Inscription</a>
       </li>
       <li *ngIf="isLoggedIn">
-        <a [routerLink]="['myinfos']" href="#" class="hover:text-blue-700" aria-current="page">Mon Compte</a>
+        <a [routerLink]="['myinfos']" href="#" class="hover:text-purple-500" aria-current="page">Mon Compte</a>
       </li>
       <li *ngIf="isLoggedIn && isDoctor">
-        <a [routerLink]="['doctor']" href="#" class="hover:text-blue-700" aria-current="page">Pannel Docteur</a>
+        <a [routerLink]="['doctor']" href="#" class="hover:text-purple-500" aria-current="page">Pannel Docteur</a>
       </li>
       <li *ngIf="isLoggedIn && !isDoctor">
-        <a [routerLink]="['mydiagnosis']" href="#" class="hover:text-blue-700" aria-current="page">Mes diagnostics</a>
+        <a [routerLink]="['mydiagnosis']" href="#" class="hover:text-purple-500" aria-current="page">Mes diagnostics</a>
       </li>
       <li *ngIf="isLoggedIn">
-        <a (click)="logout()" href="#" class="hover:text-blue-700" aria-current="page">Deconnexion</a>
+        <a (click)="logout()" href="#" class="hover:text-purple-500" aria-current="page">Deconnexion</a>
       </li>
     </ul>
   </div>
