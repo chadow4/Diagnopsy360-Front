@@ -22,9 +22,9 @@ La mise en production de l'application est : [https://diagnopsy.jsmb.fr](https:/
 
 ## II. Lancer le projet
 
-Installer les dépendances avec `npm install`
+1. Exécutez `npm install` pour installer les dépendances nécessaires du projet.
 
-Exécutez `ng serve` pour un lancer le serveur de développement. Naviguez vers `http://localhost:4200/`. L'application se rechargera automatiquement si vous modifiez l'un des fichiers source.
+2. Exécutez `ng serve` pour un lancer le serveur de développement. Naviguez vers `http://localhost:4200/`. L'application se rechargera automatiquement si vous modifiez l'un des fichiers source.
 
 Si vous souhaitez build le projet : 
 Exécutez `ng build` pour construire le projet. Les artefacts de construction seront stockés dans le répertoire `dist/`.
