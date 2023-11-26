@@ -1,5 +1,5 @@
 
-# Diagnopsy360 Front-End
+# Diagnopsy360 Front-End - Joshua GUYOT & Julien SANCHEZ
 
 <div align="center">
     <img src="https://diagnopsy.jsmb.fr/assets/img/logo.png" alt="Logo Diagnopsy360" width="500" height="auto"/>
