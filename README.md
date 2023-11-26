@@ -6,7 +6,7 @@
 </div>
 
 <br/>
-Diagnopsy360 est une plateforme interactive dédiée à la santé psychologique, conçue pour faciliter la communication et le suivi entre les professionnels de la santé mentale et leurs patients. Créée avec [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4, cette application offre une interface utilisateur intuitive pour le questionnement des patients sur leur état psychologique, la réalisation de diagnostics psychologiques, et la communication efficace entre médecins et patients.
+Diagnopsy360 est une plateforme interactive dédiée à la santé psychologique, conçue pour faciliter la communication et le suivi entre les professionnels de la santé mentale et leurs patients. Créée avec [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4, cette application offre une interface utilisateur intuitive pour le questionnement des patients sur leur état psychologique, la réalisation de diagnostics psychologiques, et la communication efficace entre médecins et patients avec une messagerie instantanée.
 
 La mise en production de l'application est : [https://diagnopsy.jsmb.fr](https://diagnopsy.jsmb.fr)
 
